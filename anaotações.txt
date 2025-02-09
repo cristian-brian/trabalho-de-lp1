@@ -1,0 +1,70 @@
+Sobre grafos 
+
+O que seria um grafo ? 
+
+É uma forma de representação entre elementos e suas relações;
+
+Dois vertices são considerados adjacentes entre si, caso tenha uma aresta ligando eles 
+
+            CLASSIFICAÇÕES
+
+    *** Direção
+
+Os grafos podem ser de dois tipos --> direcionado ou não direcionado (creio que no nosso trabalho usaremos 
+grafos não direcionados)
+
+Grafo direcionado é chamado de digrafo
+    ex: A --> B (A se liga a B, mas B não está ligado com A, é quase como o uso de implicação e bi condicional de mdl)
+
+Grafo não direcionado
+     A <--> B 
+
+    *** Grau do vértice
+
+É o número de vértices que partem ou chegam nele
+
+Caso seja um digrafo, teriam grau de entrada e saída
+
+___ Para o trabalho _________________________________________________________________________________________________
+
+    Interessante criar uma função que leia as conexões e diga quantas ligações (grau do vértice) cada vértice possui;
+_______________________________________________________________________________________________________________________
+
+Um laço é uma aresta que se liga a si mesmo
+
+
+    *** Caminho
+
+É uma sequência de vértices que sempre faz com que tenha uma aresta ligando um vértice ao outro;
+
+Caminho simples é aquele que as arestas não se repetem 
+
+Comprimento do caminho é a quantidade de arestas que o caminho usa 
+
+    Ciclo 
+É um caminho que começa e termina no próprio vértice
+
+--- Pensando além ---
+
+Comunidade conectada podia ser essa relação de ciclo -- > onde cada elemento (vertice) tem o mesmo grau e cada um corresponde a um ciclo
+
+Grafo acíclico é onde cada vértice aparece apenas uma vez
+
+        Tipos de Grafo
+
+Trivial
+
+    Aquele que representa um único vértice 
+
+simples
+    Aquele que é um grafo não direcionado, sem laços e sem arestas paralelas 
+
+completo 
+    onde todo mundo se conecta com todo mundo (isso que a gente quer )
+
+-----> IMPORTANTE <------
+
+Comunidades conectadas formam matrizes simétricas 
+
+
+
