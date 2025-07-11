@@ -45,7 +45,7 @@ int quantasMaiorVigilanteOlhando(ponto p1, aresta *arestas, int numArestas){
 }
 
 void eliminarRuasVigiadas(ponto p1, aresta *arestas, int *numArestas){
-    int arestasFree = quantasMaiorVigilanteOlhando(p1, arestas, *numArestas), j = 0;
+    int j = 0;
     for ( int i = 0; i < *numArestas; i++ ){
         if ( !temMaiorVigilante( p1, arestas[i])){
             arestas[j++] = arestas [i];            
