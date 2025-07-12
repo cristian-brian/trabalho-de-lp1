@@ -65,36 +65,57 @@ void analisarCameras (ponto *pontos, int *numPontos, aresta *arestas, int numAre
         }
     }
     *numPontos = k;
-
 }
+
+void addCamera(ponto **cameras, ponto a, int *tamAtual) {
+    (*tamAtual)++;
+    ponto *temp = realloc(*cameras, (*tamAtual) * sizeof(ponto));
+
+    if (temp == NULL) {
+        printf("Erro ao realocar memória\n");
+    }
+
+    *cameras = temp;
+    (*cameras)[(*tamAtual) - 1] = a; 
+}
+
 
 int main (void){
 
-    // temos 5 pontos
+     int numRuas, numCamera;
+    
+    
+    FILE *ptr;
 
-    ponto *cameras = (ponto *) malloc ( 5 * sizeof (ponto));
+    if ( (ptr = fopen("n_8_m_12.txt", "r")) == NULL){
+        printf ("Arquivo não pode ser aberto");
+        return 0;
+    } else {
+        fscanf(ptr, "%d %d", &numCamera, &numRuas);
+    }
 
-    aresta *ruasVigiadas = (aresta*) malloc ( 6 * sizeof(aresta));
+    ponto *cameras = (ponto *) malloc ( numCamera * sizeof (ponto));
 
-    int numRuas = 6, numCamera = 5;
+    aresta *ruasVigiadas = (aresta*) malloc ( numRuas * sizeof(aresta));
 
     for ( int i = 0; i < numCamera; i++){
         cameras[i].coordenada = i;
     }
 
     for ( int i = 0; i < numRuas; i++){
-        printf ("Digite as coordenadas das cameras que vigiam a mesma rua --> ");
-        scanf ("%d %d", &ruasVigiadas[i].p1.coordenada, &ruasVigiadas[i].p2.coordenada);
+        fscanf (ptr, "%d %d", &ruasVigiadas[i].p1.coordenada, &ruasVigiadas[i].p2.coordenada);
     }
 
-    ponto *resposta = (ponto *) malloc (3 * sizeof(ponto)); // botei 3 pqq ja sei que a resposta é 3, dps ver como ajeita
+    fclose(ptr);
 
-    int i = 0;
+    ponto *resposta = NULL; 
+    
+    int totalCameras = 0;
 
     while ( numRuas != 0 ){
         ponto a = maiorVigilante( cameras, numCamera, ruasVigiadas, numRuas);
 
-        resposta[i++] = a;
+        addCamera(&resposta, a, &totalCameras);
 
         eliminarRuasVigiadas(a, ruasVigiadas, &numRuas);
 
@@ -104,7 +125,7 @@ int main (void){
 
     printf("Cameras com maior vigilancia em ordem:\n");
 
-    for (int j = 0; j < i; j++) {
+    for (int j = 0; j < totalCameras; j++) {
         printf("Camera coordenada: %d\n", resposta[j].coordenada);
     }
 
