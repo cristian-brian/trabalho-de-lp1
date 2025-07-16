@@ -94,12 +94,14 @@ void exibirResultados (FILE *ptr, ponto *pontos, int tamPontos){
 }
 
 
-int main (void){
+int main (int argc, char *argv[]){
+
+    const char *arquivo = argv[1];
 
     int numRuas, numCamera;
     FILE *ptr;
 
-    if ( (ptr = fopen("n_10_m_15.txt", "r")) == NULL){ 
+    if ( (ptr = fopen(arquivo, "r")) == NULL){ 
         printf ("Arquivo não pode ser aberto");
         return 0;
     } else {
@@ -130,7 +132,6 @@ int main (void){
         eliminarRuasVigiadas(a, ruasVigiadas, &numRuas);
 
         analisarCameras(cameras, &numCamera, ruasVigiadas, numRuas);
-
     }
 
     FILE *ptr2;
@@ -138,7 +139,7 @@ int main (void){
     ptr2 = fopen("saida.txt", "a+");
 
     if (ptr2 == NULL) {
-    printf("Erro ao abrir arquivo de saída\n");
+    printf("Erro ao abrir arquivo de saida\n");
     return 1;
     }
 
